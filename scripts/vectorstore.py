@@ -77,7 +77,10 @@ def collections_list() -> List[str]:
 
 
 def delete_collection(name: str) -> None:
-    get_client().delete_collection(name)
+    try:
+        get_client().delete_collection(name)
+    except Exception:
+        pass  # la coleccion no existe, no es error
 
 
 if __name__ == "__main__":
